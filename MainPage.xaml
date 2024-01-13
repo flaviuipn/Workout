@@ -5,14 +5,15 @@
 
     <VerticalStackLayout Spacing="10" Margin="10">
         <HorizontalStackLayout Spacing="10">
-            <Image Source="cars.jpg"
-               SemanticProperties.Description="Rent a Car Logo"
-               HeightRequest="64" />
-            <Label FontSize="22" FontAttributes="Bold" Text="Rent A Car" VerticalOptions="End" />
+            <Image Source="gym.png"
+       SemanticProperties.Description="Gym Logo"
+       HeightRequest="300" />
+
+            <Label FontSize="22" FontAttributes="Bold" Text="! Workout GYM !" VerticalOptions="End" />
             <Label FontSize="22" Text="v1.0" VerticalOptions="End" />
         </HorizontalStackLayout>
-        <Label Text="Welcome to Rent A Car, your go-to app for managing car rentals." />
-        <Label Text="Explore our features and enjoy a seamless car rental experience." />
+        <Label Text="Welcome to your favorite gym app." />
+       
     </VerticalStackLayout>
 
 </ContentPage>

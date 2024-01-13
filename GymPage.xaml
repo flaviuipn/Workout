@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ x:Class="RentACarM.GymPage"
+ Title="GymPage">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Editor Placeholder="Enter Gym name" Margin="20"
+ Text="{Binding GymName}"
+ HeightRequest="50" />
+            <Editor Placeholder="Enter Gym adress" Margin="20"
+ Text="{Binding Adress}"
+ HeightRequest="50" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save Gym" Grid.Column="0"
+MaximumWidthRequest="200"
+ Clicked="OnSaveButtonClicked2" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

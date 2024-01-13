@@ -1,6 +1,7 @@
 namespace RentACarM;
 using RentACarM.Models;
-
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 public partial class ListEntryPage : ContentPage
 {
 	public ListEntryPage()

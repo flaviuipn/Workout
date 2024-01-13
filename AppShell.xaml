@@ -13,6 +13,12 @@
 
         <ShellContent
  Title="My Workouts"
- ContentTemplate="{DataTemplate local:ListEntryPage}"/>
+ ContentTemplate="{DataTemplate local:ListEntryPage}"
+/>
+        <ShellContent
+ Title="My Gyms"
+ ContentTemplate="{DataTemplate local:GymEntryPage}"
+ />
+
     </TabBar>
 </Shell>

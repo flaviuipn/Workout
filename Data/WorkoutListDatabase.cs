@@ -19,7 +19,24 @@ namespace RentACarM.Data
             _database.CreateTableAsync<WorkoutList>().Wait();
             _database.CreateTableAsync<Exercise>().Wait();
             _database.CreateTableAsync<ListExercise>().Wait();
+            _database.CreateTableAsync<Gym>().Wait();
 
+
+        }
+        public Task<List<Gym>> GetGymsAsync()
+        {
+            return _database.Table<Gym>().ToListAsync();
+        }
+        public Task<int> SaveGymAsync(Gym gym)
+        {
+            if (gym.ID != 0)
+            {
+                return _database.UpdateAsync(gym);
+            }
+            else
+            {
+                return _database.InsertAsync(gym);
+            }
         }
 
         public Task<int> SaveExerciseAsync(Exercise exercise)
@@ -35,9 +52,17 @@ namespace RentACarM.Data
         }
         public Task<int> DeleteExerciseAsync(Exercise exercise)
         {
-            return _database.DeleteAsync(exercise);
+            if (exercise.ID != 0)
+            {
+                return _database.DeleteAsync(exercise);
+            }
+            else
+            {
+                // Întoarce un Task care semnalează că ștergerea nu a avut loc
+                return Task.FromResult(0);
+            }
         }
-        public Task<List<Exercise>>GetExercisesAsync()
+            public Task<List<Exercise>>GetExercisesAsync()
         {
             return _database.Table<Exercise>().ToListAsync();
         }

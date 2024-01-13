@@ -22,15 +22,21 @@ public partial class ExercisePage : ContentPage
     }
     async void OnDeleteButtonClicked1(object sender, EventArgs e)
     {
-        var exercise = (Exercise)BindingContext;
+        var selectedExercise = listView.SelectedItem as Exercise;
 
-        if (exercise != null)
+        if (selectedExercise != null)
         {
-            await App.Database.DeleteExerciseAsync(exercise);
-            listView.ItemsSource = await App.Database.GetExercisesAsync();
-             // Poate fi necesară această linie pentru a reveni la pagina anterioară
+            bool isUserConfirmed = await DisplayAlert("Delete Exercise", "Are you sure you want to delete this exercise?", "Yes", "No");
+
+            if (isUserConfirmed)
+            {
+                await App.Database.DeleteExerciseAsync(selectedExercise);
+                listView.ItemsSource = await App.Database.GetExercisesAsync();
+                listView.SelectedItem = null; // Deselectează elementul selectat
+            }
         }
     }
+
     async void OnAddButtonClicked(object sender, EventArgs e)
     {
         if (selectedExercise != null)
@@ -44,7 +50,7 @@ public partial class ExercisePage : ContentPage
             await App.Database.SaveListExerciseAsync(lp);
             selectedExercise.ListExercises = new List<ListExercise> { lp };
             listView.ItemsSource = await App.Database.GetExercisesAsync();
-            await Navigation.PopAsync();
+           //await Navigation.PopAsync();
         }
     }
 
