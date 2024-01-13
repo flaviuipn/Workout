@@ -2,7 +2,8 @@
 using System;
 using RentACarM.Data;
 using System.IO;
-
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 public partial class App : Application
 {

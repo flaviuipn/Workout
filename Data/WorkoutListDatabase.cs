@@ -16,13 +16,17 @@ namespace RentACarM.Data
         public WorkoutListDatabase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<WorkoutList>().Wait();
-            _database.CreateTableAsync<Exercise>().Wait();
-            _database.CreateTableAsync<ListExercise>().Wait();
-            _database.CreateTableAsync<Gym>().Wait();
-
-
+            Task.Run(() => InitializeDatabaseAsync()).Wait();
         }
+
+        private async Task InitializeDatabaseAsync()
+        {
+            await _database.CreateTableAsync<WorkoutList>();
+            await _database.CreateTableAsync<Exercise>();
+            await _database.CreateTableAsync<ListExercise>();
+            await _database.CreateTableAsync<Gym>();
+        }
+
         public Task<List<Gym>> GetGymsAsync()
         {
             return _database.Table<Gym>().ToListAsync();
